@@ -24,30 +24,26 @@ namespace api.IFTool.Controllers
 
         // GET ProjectDeploy/values
         [HttpGet("ProjectDeploy")]
-        public async Task<object> ProjectDeploy([FromQuery]string branch, [FromQuery]string env)
+        public async Task<object> ProjectDeploy([FromQuery]string branch, [FromQuery]string b)
         {
             try
             {
 
-                if (branch==null || env == null)
-                {
-                    var text = "{\"branch2\":" + branch + ",\"env\":" + env + "}";
-                    return text;
-                }
+               
                 var projectDeploy = await _masterRepository.ProjectDeploy(branch);
                 var data = "";
                 if (projectDeploy != null)
                 {
-                    if (env == "dev")
+                    if (b == "dev")
                     { data = projectDeploy.project + "|" + projectDeploy.dev_env; }
-                    else if (env == "uat")
+                    else if (b == "uat")
                     { data = projectDeploy.project + "|" + projectDeploy.uat_env; }
-                    else
+                    else if (b == "prd")
                     { data = projectDeploy.project + "|" + projectDeploy.prd_env; }
                 }
                 else
                 {
-                    var text = "{\"branch\":" + branch + ",\"env\":" + env + "}";
+                    var text = "{\"branch\":" + branch + ",\"env\":" + b + "}";
                     return text;
                 }
                 
