@@ -37,18 +37,28 @@ namespace api.IFTool.Controllers
             {
                 var projectDeploy = await _masterRepository.ProjectDeploy(branch);
                 var data = "";
-                if (env == "dev")
-                { data = projectDeploy.project + "|" + projectDeploy.dev_env; }
-                else if (env == "uat")
-                { data = projectDeploy.project + "|" + projectDeploy.uat_env; }
+                if (projectDeploy != null)
+                {
+                    if (env == "dev")
+                    { data = projectDeploy.project + "|" + projectDeploy.dev_env; }
+                    else if (env == "uat")
+                    { data = projectDeploy.project + "|" + projectDeploy.uat_env; }
+                    else
+                    { data = projectDeploy.project + "|" + projectDeploy.prd_env; }
+                }
                 else
-                { data = projectDeploy.project + "|" + projectDeploy.prd_env; }
+                {
+                    var text = "{\"branch\":" + branch + ",\"env\":" + env + "}";
+                    return text;
+                }
+                
 
 
                 return data;
             }
             catch (Exception ex)
             {
+                
                 return ex;
             }
           
