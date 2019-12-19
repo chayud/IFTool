@@ -20,5 +20,9 @@ namespace api.IFTool.Models
         public string dev_env { get; set; }
         public string uat_env { get; set; }
         public string prd_env { get; set; }
+        public string dev_project { get; set; }
+        public string uat_project { get; set; }
+        public string prd_project { get; set; }
+
     }
 }

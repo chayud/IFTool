@@ -39,11 +39,11 @@ namespace api.IFTool.Controllers
                 if (projectDeploy != null)
                 {
                     if (b == "dev")
-                    { data = projectDeploy.project + "|" + projectDeploy.dev_env; }
+                    { data = projectDeploy.dev_project + "|" + projectDeploy.dev_env; }
                     else if (b == "uat")
-                    { data = projectDeploy.project + "|" + projectDeploy.uat_env; }
+                    { data = projectDeploy.uat_project + "|" + projectDeploy.uat_env; }
                     else if (b == "prd")
-                    { data = projectDeploy.project + "|" + projectDeploy.prd_env; }
+                    { data = projectDeploy.prd_project + "|" + projectDeploy.prd_env; }
                 }
                 else
                 {
