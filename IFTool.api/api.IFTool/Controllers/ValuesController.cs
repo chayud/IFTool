@@ -8,8 +8,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace api.IFTool.Controllers
 {
-    [Route("[controller]")]
-    
+    [Route("api/[controller]")]
     public class ValuesController : BaseController
     {
         private readonly IMasterRepository _masterRepository;
@@ -24,17 +23,17 @@ namespace api.IFTool.Controllers
         }
 
         // GET ProjectDeploy/values
-        /// <summary>
-        /// test
-        /// </summary>
-        /// <param name="branch"></param>
-        /// <param name="env"></param>
-        /// <returns></returns>
-        [HttpGet]
+        [HttpGet("ProjectDeploy")]
         public async Task<object> ProjectDeploy([FromQuery]string branch, [FromQuery]string env)
         {
             try
             {
+
+                if (branch==null || env == null)
+                {
+                    var text = "{\"branch2\":" + branch + ",\"env\":" + env + "}";
+                    return text;
+                }
                 var projectDeploy = await _masterRepository.ProjectDeploy(branch);
                 var data = "";
                 if (projectDeploy != null)
