@@ -64,6 +64,8 @@ namespace api.IFTool.Repositories
             }
             catch (Exception ex)
             {
+                ex.HelpLink = Connection.ConnectionString;
+
                 throw ex;
             }
 
