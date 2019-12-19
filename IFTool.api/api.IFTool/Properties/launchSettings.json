@@ -1,0 +1,26 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:50834/",
+      "sslPort": 44365
+    }
+  },
+  "profiles": {
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/values"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "values",
+      "environmentVariables": {
+        "ConnectionString": "Data Source=192.168.0.50;Initial Catalog=IFTools;User ID=app_tools;Password=P@ssw0rd; Application Name=api.IFTool; MultipleActiveResultSets=True;",
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    }
+  }
+}
