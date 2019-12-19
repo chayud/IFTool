@@ -29,7 +29,11 @@ namespace api.IFTool.Controllers
             try
             {
 
-               
+                if (branch==null || b == null)
+                {
+                    var text = "{\"branch2\":" + branch + ",\"env\":" + b + "}";
+                    return text;
+                }
                 var projectDeploy = await _masterRepository.ProjectDeploy(branch);
                 var data = "";
                 if (projectDeploy != null)

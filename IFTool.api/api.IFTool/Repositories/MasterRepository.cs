@@ -53,14 +53,14 @@ namespace api.IFTool.Repositories
 
             try
             {
-                using (IDbConnection conn = Connection)
-                {
-                    conn.Open();
-                    string sQuery = "select * from ProjectDeploy where branch = @a ";
-                    var data = await conn.QueryAsync<ProjectDeploy>(sQuery, new { @a = id });
+                CreateConnection();
 
-                    return data.FirstOrDefault();
-                }
+                    var sql = string.Format(@"SELECT * FROM ProjectDeploy WHERE branch = @a");
+
+                var items = Conn.Query<ProjectDeploy>(sql, new { @a = id }).FirstOrDefault() ?? new ProjectDeploy();
+
+                    return items;
+                
             }
             catch (Exception ex)
             {
